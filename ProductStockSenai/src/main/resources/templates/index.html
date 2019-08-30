@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+<meta charset="utf-8">
+<title>Product Stock</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div align="center">
+	<div class="p-3 mb-2 bg-info text-white">
+		<h1>PRODUCT LIST</h1>
+	</div>
+	
+	<a href="new">
+	<button type="button" class="btn btn-primary">Create a new product</button>
+	</a>
+	<br></br>
+	
+	<table border="1" cellpadding="10" class="table table-striped">
+		<thead class="thead-dark">
+			<tr class="bg-success">
+				<th>Product ID</th>
+				<th>Name</th>
+				<th>Brand</th>
+				<th>Made in</th>
+				<th>Price</th>
+				<th>Options</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr th:each="product: ${listProducts}">
+				<td th:text="${product.id}">Produto id</td>
+				<td th:text="${product.name}">nome</td>
+				<td th:text="${product.brand}">marca</td>
+				<td th:text="${product.madein}">made in</td>
+				<td th:text="${product.price}">Preco</td>
+				<td>
+					<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+					&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>	
+</div>
+</body> 
+	  		
+</html>
